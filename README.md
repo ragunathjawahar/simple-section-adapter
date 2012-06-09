@@ -1,7 +1,7 @@
 About
 =====
 
-This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [jar][jar-download] or the [sources][github-project] to your Android project.
+This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [jar][jar-download] or the [sources][sources-download-link] to your Android project.
 
 Pros
 ----
@@ -51,10 +51,11 @@ FAQs
     <br />Yes, you can use [SimpleSectionAdapter][simple-section-adapter] with any adapter that extends [BaseAdapter][base-adapter].
 
   - **Are there any resource files that has to be included with my project?** 
-    <br />No, you don't have to include anything besides the [SimpleSectionAdapter][simple-section-adapter] and the Sectionizer[sectionizer].
+    <br />No, you don't have to include anything besides the [SimpleSectionAdapter][simple-section-adapter] and the [Sectionizer][sectionizer].
 
   [google-search]: https://www.google.co.in/search?ie=UTF-8&q=android+section+adapter
   [github-project]: https://github.com/ragunathjawahar/simple-section-adapter
+  [sources-download-link]: https://github.com/ragunathjawahar/simple-section-adapter/zipball/master
   [jar-download]: https://github.com/downloads/ragunathjawahar/simple-section-adapter/ssa-20120609.jar
   [simple-section-adapter]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/SimpleSectionAdapter.java
   [sectionizer]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/Sectionizer.java
