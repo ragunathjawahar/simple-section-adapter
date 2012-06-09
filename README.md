@@ -1,7 +1,7 @@
 About
 =====
 
-This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [jar][jar-download] or the sources[github-project] to your Android project.
+This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [jar][jar-download] or the [sources][github-project] to your Android project.
 
 Pros
 ----
@@ -9,8 +9,8 @@ Pros
   - The simplest implementation requires just *6 lines* of code.
   - Zero project specific dependencies.
 
-Versions
--------
+Compatibility
+-------------
 
   - Android 1.6 and up
 
@@ -48,15 +48,16 @@ While using an [OnItemClickListener][item-click-listener] instead of using the l
 FAQs
 ----
   - **Can I use SimpleSectionAdapter with ArrayAdapter or CursorAdapter?** 
-    <br />Yes, you can use [SimpleSectionAdapter][simple-section-adpater] with any adapter that extends [BaseAdapter][base-adapter].
+    <br />Yes, you can use [SimpleSectionAdapter][simple-section-adapter] with any adapter that extends [BaseAdapter][base-adapter].
 
   - **Are there any resource files that has to be included with my project?** 
-    <br />No, you don't have to include anything beyond the SimpleSectionAdapter and the Sectionizer.
+    <br />No, you don't have to include anything besides the [SimpleSectionAdapter][simple-section-adapter] and the Sectionizer[sectionizer].
 
   [google-search]: https://www.google.co.in/search?ie=UTF-8&q=android+section+adapter
   [github-project]: https://github.com/ragunathjawahar/simple-section-adapter
-  [jar-download]: http://jarlink
-  [item-click-listener]: http://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html
-  [simple-section-adpater]: http://linktosimplesectionadapter
+  [jar-download]: https://github.com/downloads/ragunathjawahar/simple-section-adapter/ssa-20120609.jar
+  [simple-section-adapter]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/SimpleSectionAdapter.java
+  [sectionizer]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/Sectionizer.java
   [base-adapter]: http://developer.android.com/reference/android/widget/BaseAdapter.html
+  [item-click-listener]: http://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html
 
