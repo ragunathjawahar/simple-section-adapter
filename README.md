@@ -33,6 +33,8 @@ Implementation
                 new BookSectionizer());
     ...
 
+**NOTE: The data source (Cursor, ArrayList or Array) provided to your Adapter should be sorted in a logical way you want them to be sectioned. For instance, if you want to section your books by genres, they have to be sorted by genres before you wrap it within the [SimpleSectionAdapter][simple-section-adapter].**
+
 OnItemClickListener
 -------------------
 While using an [OnItemClickListener][item-click-listener] instead of using the list item's position directly, use is as shown below.
@@ -49,6 +51,9 @@ FAQs
 ----
   - **Can I use SimpleSectionAdapter with ArrayAdapter or CursorAdapter?** 
     <br />Yes, you can use [SimpleSectionAdapter][simple-section-adapter] with any adapter that extends [BaseAdapter][base-adapter].
+
+  - **Should I sort my data in my data source source (Cursor, ArrayList or Array) logically in the order they have to be sectioned?** 
+    <br />Yes, you have to sort your data, [SimpleSectionAdapter][simple-section-adapter] does not perform sorting.
 
   - **Are there any resource files that has to be included with my project?** 
     <br />No, you don't have to include anything besides the [SimpleSectionAdapter][simple-section-adapter] and the [Sectionizer][sectionizer].
