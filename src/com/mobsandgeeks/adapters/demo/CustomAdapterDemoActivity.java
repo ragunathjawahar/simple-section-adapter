@@ -133,7 +133,7 @@ public class CustomAdapterDemoActivity extends ListActivity {
     }
     
     /*
-     * This Comparator sorts cities in based on the distance from the current city.
+     * This Comparator sorts cities based on their distances from the current city.
      */
     class DistanceComparator implements Comparator<City> {
         private City currentCity;
@@ -153,7 +153,7 @@ public class CustomAdapterDemoActivity extends ListActivity {
     }
     
     /*
-     * Method find distance in kilometers between two given cities.
+     * Method finds distance in kilometers between two given cities.
      */
     private float getDistanceInKm(City sourceCity, City destinationCity) {
         Location sourceCityLocation = new Location("");
@@ -168,8 +168,8 @@ public class CustomAdapterDemoActivity extends ListActivity {
     }
     
     /*
-     * This is your data source. In reality this could come from a SQLite database,
-     * a web service or a flat-file.
+     * This is your data source. In reality, this could come from a SQLite database,
+     * a remote server or a flat-file.
      */
     private List<City> getCities() {
         List<City> cities = new ArrayList<City>();
