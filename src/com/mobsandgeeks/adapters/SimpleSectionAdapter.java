@@ -176,8 +176,8 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     /**
      * Returns the actual index of the object in the data source linked to the this list item.
      * 
-     * @param listItemPosition List item position in the {@link ListView}.
-     * @return Actual index of the item in the custom list adapter's data source.
+     * @param position List item position in the {@link ListView}.
+     * @return Index of the item in the wrapped list adapter's data source.
      */
     public int getIndexForPosition(int position) {
         int nSections = 0;
