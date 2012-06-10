@@ -21,6 +21,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -37,13 +38,16 @@ import android.widget.TextView;
  * @version 1.0
  */
 public class SimpleSectionAdapter<T> extends BaseAdapter {
+    // Debug
+    private static final boolean DEBUG = false;
+    private static final String TAG = SimpleSectionAdapter.class.getSimpleName();
     
     // Constants
     private static final int VIEW_TYPE_SECTION_HEADER = 0;
     
     // Attributes
     private Context context;
-    private BaseAdapter customListAdapter;
+    private BaseAdapter listAdapter;
     private int sectionHeaderLayoutId;
     private int sectionTitleTextViewId;
     private Sectionizer<T> sectionizer;
@@ -58,13 +62,13 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
      * @param sectionTitleTextViewId Id of a TextView present in the section header layout.
      * @param sectionizer Sectionizer for sectioning the {@link ListView}.
      */
-    public SimpleSectionAdapter(Context context, BaseAdapter customListAdapter, 
+    public SimpleSectionAdapter(Context context, BaseAdapter listAdapter, 
             int sectionHeaderLayoutId, int sectionTitleTextViewId, 
             Sectionizer<T> sectionizer) {
         if(context == null) {
             throw new IllegalArgumentException("context cannot be null.");
-        } else if(customListAdapter == null) {
-            throw new IllegalArgumentException("customListAdapter cannot be null.");
+        } else if(listAdapter == null) {
+            throw new IllegalArgumentException("listAdapter cannot be null.");
         } else if(sectionizer == null) {
             throw new IllegalArgumentException("sectionizer cannot be null.");
         } else if(!isTextView(context, sectionHeaderLayoutId, sectionTitleTextViewId)) {
@@ -72,7 +76,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         }
         
         this.context = context;
-        this.customListAdapter = customListAdapter;
+        this.listAdapter = listAdapter;
         this.sectionHeaderLayoutId = sectionHeaderLayoutId;
         this.sectionTitleTextViewId = sectionTitleTextViewId;
         this.sectionizer = sectionizer;
@@ -91,7 +95,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     
     @Override
     public int getCount() {
-        return customListAdapter.getCount() + getSectionCount();
+        return listAdapter.getCount() + getSectionCount();
     }
     
     @Override
@@ -114,7 +118,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
             break;
 
         default:
-            view = customListAdapter.getView(getUndecoratedItemPosition(position), 
+            view = listAdapter.getView(getIndexForPosition(position), 
                     convertView, parent);
             break;
         }
@@ -129,42 +133,42 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
 
     @Override
     public boolean areAllItemsEnabled() {
-        return customListAdapter.areAllItemsEnabled() ? 
+        return listAdapter.areAllItemsEnabled() ? 
                 sections.size() == 0 : false;
     }
 
     @Override
     public int getItemViewType(int position) {
-        int positionInCustomAdapter = getUndecoratedItemPosition(position);
+        int positionInCustomAdapter = getIndexForPosition(position);
         return sections.values().contains(position) ? 
                 VIEW_TYPE_SECTION_HEADER : 
-                    customListAdapter.getItemViewType(positionInCustomAdapter) + 1;
+                    listAdapter.getItemViewType(positionInCustomAdapter) + 1;
     }
 
     @Override
     public int getViewTypeCount() {
-        return customListAdapter.getViewTypeCount() + 1;
+        return listAdapter.getViewTypeCount() + 1;
     }
 
     @Override
     public boolean isEnabled(int position) {
         return sections.values().contains(position) ? 
-                false : customListAdapter.isEnabled(getUndecoratedItemPosition(position));
+                false : listAdapter.isEnabled(getIndexForPosition(position));
     }
     
     @Override
     public Object getItem(int position) {
-        return customListAdapter.getItem(getUndecoratedItemPosition(position));
+        return listAdapter.getItem(getIndexForPosition(position));
     }
 
     @Override
     public long getItemId(int position) {
-        return customListAdapter.getItemId(getUndecoratedItemPosition(position));
+        return listAdapter.getItemId(getIndexForPosition(position));
     }
     
     @Override
     public void notifyDataSetChanged() {
-        customListAdapter.notifyDataSetChanged();
+        listAdapter.notifyDataSetChanged();
         findSections();
         super.notifyDataSetChanged();
     }
@@ -175,17 +179,17 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
      * @param listItemPosition List item position in the {@link ListView}.
      * @return Actual index of the item in the custom list adapter's data source.
      */
-    public int getUndecoratedItemPosition(int listItemPosition) {
+    public int getIndexForPosition(int position) {
         int nSections = 0;
         
         Set<Entry<String, Integer>> entrySet = sections.entrySet();
         for(Entry<String, Integer> entry : entrySet) {
-            if(entry.getValue() < listItemPosition) {
+            if(entry.getValue() < position) {
                 nSections++;
             }
         }
         
-        return listItemPosition - nSections;
+        return position - nSections;
     }
 
     static class SectionHolder {
@@ -193,17 +197,22 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     }
     
     private void findSections() {
-        int n = customListAdapter.getCount();
+        int n = listAdapter.getCount();
         int nSections = 0;
         
         for(int i=0; i<n; i++) {
             @SuppressWarnings("unchecked")
-            String sectionName = sectionizer.getSectionTitleForItem((T) getItem(i));
+            String sectionName = sectionizer.getSectionTitleForItem(
+                    (T) listAdapter.getItem(i));
             
             if(!sections.containsKey(sectionName)) {
                 sections.put(sectionName, i + nSections);
                 nSections ++;
             }
+        }
+        
+        if(DEBUG) {
+            Log.d(TAG, String.format("Found %d sections.", sections.size()));
         }
     }
 

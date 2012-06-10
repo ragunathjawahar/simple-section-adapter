@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".demo.ArrayAdapterDemoActivity" android:label="Array Adapter"></activity>
+        <activity android:name=".demo.CustomAdapterDemoActivity" android:label="Custom Adapter"></activity>
     </application>
 
 </manifest>
