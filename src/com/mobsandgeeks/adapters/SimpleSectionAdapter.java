@@ -51,6 +51,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     
     /**
      * Constructs a {@linkplain SimpleSectionAdapter}.
+     * 
      * @param context The context for this adapter.
      * @param customListAdapter A {@link ListAdapter} that has to be sectioned.
      * @param sectionHeaderLayoutId Layout Id of the layout that is to be used for the section header. 
@@ -128,7 +129,8 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
 
     @Override
     public boolean areAllItemsEnabled() {
-        return sections.size() == 0 ? true : false;
+        return customListAdapter.areAllItemsEnabled() ? 
+                sections.size() == 0 : false;
     }
 
     @Override
@@ -144,7 +146,8 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
 
     @Override
     public boolean isEnabled(int position) {
-        return sections.values().contains(position) ? false : true;
+        return sections.values().contains(position) ? 
+                false : customListAdapter.isEnabled(getUndecoratedItemPosition(position));
     }
     
     @Override
