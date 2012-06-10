@@ -14,8 +14,8 @@ Compatibility
 
   - Android 1.6 and up
 
-Implementation
---------------
+Usage
+-----
 
     // 1. Create a Sectionizer    
     class BookSectionizer implements Sectionizer<Book> {
@@ -35,13 +35,17 @@ Implementation
 
 **NOTE: The data source (Cursor, ArrayList or Array) provided to your Adapter should be sorted in a logical way you want them to be sectioned. For instance, if you want to section your books by genres, they have to be sorted by genres before you wrap it within the [SimpleSectionAdapter][simple-section-adapter].**
 
+Example
+-------
+Check the [complete example][simple-example-link] for a quick start. You can download the [sources][sources-download-link] for more examples.
+
 OnItemClickListener
 -------------------
 While using an [OnItemClickListener][item-click-listener] instead of using the list item's position directly, use is as shown below.
 
     @Override
     public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {
-        int actualPosition = sectionAdapter.getUndecoratedItemPosition(position);
+        int index = sectionAdapter.getIndexForPosition(position);
 
         // More code...
     }
@@ -66,4 +70,5 @@ FAQs
   [sectionizer]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/Sectionizer.java
   [base-adapter]: http://developer.android.com/reference/android/widget/BaseAdapter.html
   [item-click-listener]: http://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html
+  [simple-example-link]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/demo/ArrayAdapterDemoActivity.java
 
