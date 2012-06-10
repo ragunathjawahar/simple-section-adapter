@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SimpleSectionAdapter Demos</string>
+    <string name="city">City</string>
+    <string name="geo_point">Geo Point</string>
 </resources>
