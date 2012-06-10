@@ -1,12 +1,12 @@
 About
 =====
 
-This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [latest jar][jar-download] or the [sources][sources-download-link] to your Android project.
+This is the **SIMPLEST** [Section Adapter][google-search] available for Android [ListView][list-view-link]. Works with any custom adapter that you already have. No project specific dependencies. Just include the [latest jar][jar-download] or the [sources][sources-download-link] to your Android project.
 
 Pros
 ----
 
-  - The simplest implementation requires just *6 lines* of code.
+  - The simplest implementation yet, you can create a sectioned ListView with just *6 lines* of code.
   - Zero project specific dependencies.
 
 Compatibility
@@ -33,15 +33,13 @@ Usage
                 new BookSectionizer());
     ...
 
-**NOTE: The data source (Cursor, ArrayList or Array) provided to your Adapter should be sorted in a logical way you want them to be sectioned. For instance, if you want to section your books by genres, they have to be sorted by genres before you wrap it within the [SimpleSectionAdapter][simple-section-adapter].**
+Also you can check a [complete example][simple-example-link] for a quick start. The [sources][sources-download-link] have a few more examples as well.
 
-Example
--------
-Check the [complete example][simple-example-link] for a quick start. You can download the [sources][sources-download-link] for more examples.
+**NOTE: The data source (Cursor, ArrayList or Array) provided to your Adapter should be sorted in a logical way you want them to be sectioned. For instance, if you want to section your books by genres, they have to be sorted by genres before you wrap it within the [SimpleSectionAdapter][simple-section-adapter].**
 
 OnItemClickListener
 -------------------
-While using an [OnItemClickListener][item-click-listener] instead of using the list item's position directly, use is as shown below.
+While using an [OnItemClickListener][item-click-listener] instead of using the list item's position directly, use it as shown below.
 
     @Override
     public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {
@@ -62,6 +60,7 @@ FAQs
   - **Are there any resource files that has to be included with my project?** 
     <br />No, you don't have to include anything besides the [SimpleSectionAdapter][simple-section-adapter] and the [Sectionizer][sectionizer].
 
+  [list-view-link]: http://developer.android.com/reference/android/widget/ListView.html
   [google-search]: https://www.google.co.in/search?ie=UTF-8&q=android+section+adapter
   [github-project]: https://github.com/ragunathjawahar/simple-section-adapter
   [sources-download-link]: https://github.com/ragunathjawahar/simple-section-adapter/zipball/master
