@@ -135,8 +135,10 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
 
     @Override
     public int getItemViewType(int position) {
+        int positionInCustomAdapter = getUndecoratedItemPosition(position);
         return sections.values().contains(position) ? 
-                VIEW_TYPE_SECTION_HEADER : customListAdapter.getItemViewType(position) + 1;
+                VIEW_TYPE_SECTION_HEADER : 
+                    customListAdapter.getItemViewType(positionInCustomAdapter) + 1;
     }
 
     @Override
