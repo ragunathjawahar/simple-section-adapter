@@ -28,7 +28,7 @@ Implementation
 
     // 2. Wrap your existing adapter with the SimpleSectionAdapter
     ....
-    sectionAdapter = new SimpleSectionAdapter<Book>(this, 
+    sectionAdapter = new SimpleSectionAdapter<Book>(context, 
                 yourBookAdapter, R.layout.section_header, R.id.title, 
                 new BookSectionizer());
     ...
