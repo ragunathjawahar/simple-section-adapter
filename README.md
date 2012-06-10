@@ -1,7 +1,7 @@
 About
 =====
 
-This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [jar][jar-download] or the [sources][sources-download-link] to your Android project.
+This is the **SIMPLEST** [Section Adapter][google-search] available for Android. Works with any custom adapter that you already have. No project specific dependencies. Just include the [latest jar][jar-download] or the [sources][sources-download-link] to your Android project.
 
 Pros
 ----
@@ -61,7 +61,7 @@ FAQs
   [google-search]: https://www.google.co.in/search?ie=UTF-8&q=android+section+adapter
   [github-project]: https://github.com/ragunathjawahar/simple-section-adapter
   [sources-download-link]: https://github.com/ragunathjawahar/simple-section-adapter/zipball/master
-  [jar-download]: https://github.com/downloads/ragunathjawahar/simple-section-adapter/ssa-20120609.jar
+  [jar-download]: https://github.com/ragunathjawahar/simple-section-adapter/downloads
   [simple-section-adapter]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/SimpleSectionAdapter.java
   [sectionizer]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/Sectionizer.java
   [base-adapter]: http://developer.android.com/reference/android/widget/BaseAdapter.html
