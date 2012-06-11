@@ -16,7 +16,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class CustomAdapterDemoActivity extends ListActivity {
 
@@ -48,6 +50,21 @@ public class CustomAdapterDemoActivity extends ListActivity {
 
     }
     
+    /*
+     * (non-Javadoc)
+     * @see android.app.ListActivity#onListItemClick(android.widget.ListView, android.view.View, int, long)
+     */
+    @Override
+    protected void onListItemClick(ListView l, View v, int position, long id) {
+        City chennai = new City("Chennai", 13.15, 80.283333);
+        City city = (City) getListAdapter().getItem(position);
+        
+        String message = String.format("%s is %.2f km away from %s.", 
+                city.getName(), getDistanceInKm(chennai, city), chennai.getName());
+        
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
     /*
      * A custom adapter that extends the ArrayAdapter<T>.
      */
