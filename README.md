@@ -43,7 +43,12 @@ While using an [OnItemClickListener][item-click-listener] instead of using the l
 
     @Override
     public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {
+        // 1. You could do this
+        City city = (City) sectionAdapter.getItem(position);
+        
+        // 2. Or you could do this :)
         int index = sectionAdapter.getIndexForPosition(position);
+        City sameCity = cities.get(index);
 
         // More code...
     }
