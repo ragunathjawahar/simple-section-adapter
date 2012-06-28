@@ -57,7 +57,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
      * Constructs a {@linkplain SimpleSectionAdapter}.
      * 
      * @param context The context for this adapter.
-     * @param customListAdapter A {@link ListAdapter} that has to be sectioned.
+     * @param listAdapter A {@link ListAdapter} that has to be sectioned.
      * @param sectionHeaderLayoutId Layout Id of the layout that is to be used for the section header. 
      * @param sectionTitleTextViewId Id of a TextView present in the section header layout.
      * @param sectionizer Sectionizer for sectioning the {@link ListView}.
