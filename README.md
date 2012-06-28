@@ -37,6 +37,11 @@ Also you can check a [complete example][simple-example-link] for a quick start. 
 
 **NOTE: The data source (Cursor, ArrayList or Array) provided to your Adapter should be sorted in a logical way you want them to be sectioned. For instance, if you want to section your books by genres, they have to be sorted by genres before you wrap it within the [SimpleSectionAdapter][simple-section-adapter].**
 
+Screenshots
+-------------------
+<img src="http://mobsandgeeks.com/images/android/ssa-ss1.png"> &nbsp; <img src="http://mobsandgeeks.com/images/android/ssa-ss2.png">
+
+
 OnItemClickListener
 -------------------
 While using an [OnItemClickListener][item-click-listener] instead of using the list item's position directly, use it as shown below.
@@ -75,4 +80,3 @@ FAQs
   [base-adapter]: http://developer.android.com/reference/android/widget/BaseAdapter.html
   [item-click-listener]: http://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html
   [simple-example-link]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/adapters/demo/ArrayAdapterDemoActivity.java
-
