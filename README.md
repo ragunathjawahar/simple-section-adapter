@@ -1,7 +1,7 @@
 About
 =====
 
-This is the **SIMPLEST** [Section Adapter][google-search] available for Android [ListView][list-view-link]. Works with any custom adapter that you already have. No project specific dependencies. Just include the [latest jar][jar-download] or the [sources][sources-download-link] to your Android project.
+This is the **SIMPLEST** [Section Adapter][google-search] available for Android's [ListView][list-view-link]. It works with list adapters that you already have. No project specific dependencies. Just include the [latest jar][jar-download] or the [sources][sources-download-link] to your Android project.
 
 Pros
 ----
