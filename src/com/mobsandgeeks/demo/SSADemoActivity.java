@@ -1,4 +1,4 @@
-package com.mobsandgeeks.adapters.demo;
+package com.mobsandgeeks.demo;
 
 import com.mobsandgeeks.adapters.R;
 

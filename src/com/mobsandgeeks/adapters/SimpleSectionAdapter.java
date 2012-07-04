@@ -72,7 +72,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         } else if(sectionizer == null) {
             throw new IllegalArgumentException("sectionizer cannot be null.");
         } else if(!isTextView(context, sectionHeaderLayoutId, sectionTitleTextViewId)) {
-            throw new IllegalArgumentException("sectionTextViewId should be a TextView.");
+            throw new IllegalArgumentException("sectionTitleTextViewId should be a TextView.");
         }
         
         this.context = context;

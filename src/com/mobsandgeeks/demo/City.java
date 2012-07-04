@@ -1,4 +1,4 @@
-package com.mobsandgeeks.adapters.demo;
+package com.mobsandgeeks.demo;
 
 public class City {
     private String name;

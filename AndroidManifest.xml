@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".demo.SSADemoActivity"
+            android:name="com.mobsandgeeks.demo.SSADemoActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,8 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".demo.ArrayAdapterDemoActivity" android:label="Array Adapter"></activity>
-        <activity android:name=".demo.CustomAdapterDemoActivity" android:label="Custom Adapter"></activity>
+        
+        <activity android:name="com.mobsandgeeks.demo.ArrayAdapterDemoActivity" 
+            android:label="Array Adapter" />
+        
+        <activity android:name="com.mobsandgeeks.demo.CustomAdapterDemoActivity" 
+            android:label="Custom Adapter" />
     </application>
 
 </manifest>
