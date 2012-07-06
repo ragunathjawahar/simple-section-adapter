@@ -199,6 +199,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     private void findSections() {
         int n = listAdapter.getCount();
         int nSections = 0;
+        sections.clear();
         
         for(int i=0; i<n; i++) {
             @SuppressWarnings("unchecked")
