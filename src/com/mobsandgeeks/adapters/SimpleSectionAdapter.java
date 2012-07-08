@@ -35,12 +35,12 @@ import android.widget.TextView;
  * <b>NOTE: The adapter assumes that the data source of the decorated list adapter is sorted.</b>
  * 
  * @author Ragunath Jawahar R (rj@mobsandgeeks.com)
- * @version 1.0
+ * @version 0.2
  */
 public class SimpleSectionAdapter<T> extends BaseAdapter {
     // Debug
-    private static final boolean DEBUG = false;
-    private static final String TAG = SimpleSectionAdapter.class.getSimpleName();
+    static final boolean DEBUG = false;
+    static final String TAG = SimpleSectionAdapter.class.getSimpleName();
     
     // Constants
     private static final int VIEW_TYPE_SECTION_HEADER = 0;
