@@ -21,7 +21,7 @@ package com.mobsandgeeks.adapters;
  * compared against. The parameterized type of the <b>Sectionizer</b> should be same as that of the 
  * {@link SimpleSectionAdapter}.
  * 
- * @author Ragunath Jawahar R (rj@mobsandgeeks.com)
+ * @author Ragunath Jawahar R <rj@mobsandgeeks.com>
  * @version 1.0 
  */
 public interface Sectionizer<T> {

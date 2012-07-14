@@ -34,7 +34,7 @@ import android.widget.TextView;
  * <br />
  * <b>NOTE: The adapter assumes that the data source of the decorated list adapter is sorted.</b>
  * 
- * @author Ragunath Jawahar R (rj@mobsandgeeks.com)
+ * @author Ragunath Jawahar R <rj@mobsandgeeks.com>
  * @version 0.2
  */
 public class SimpleSectionAdapter<T> extends BaseAdapter {
