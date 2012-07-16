@@ -32,5 +32,5 @@ public interface Sectionizer<T> {
      * @param instance The instance obtained from the data source of the decorated list adapter.
      * @return section title for the given instance.
      */
-    public String getSectionTitleForItem(T instance);
+    String getSectionTitleForItem(T instance);
 }
