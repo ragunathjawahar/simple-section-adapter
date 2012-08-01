@@ -80,4 +80,3 @@ FAQs
   [base-adapter]: http://developer.android.com/reference/android/widget/BaseAdapter.html
   [item-click-listener]: http://developer.android.com/reference/android/widget/AdapterView.OnItemClickListener.html
   [simple-example-link]: https://github.com/ragunathjawahar/simple-section-adapter/blob/master/src/com/mobsandgeeks/demo/ArrayAdapterDemoActivity.java
-  
