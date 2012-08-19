@@ -27,11 +27,12 @@ Usage
     }
 
     // 2. Wrap your existing adapter with the SimpleSectionAdapter
-    ....
-    sectionAdapter = new SimpleSectionAdapter<Book>(context, 
+    SimpleSectionAdapter<Book> sectionAdapter = new SimpleSectionAdapter<Book>(context, 
                 yourBookAdapter, R.layout.section_header, R.id.title, 
                 new BookSectionizer());
-    ...
+    
+    // 3. Set the SimpleSectionAdapter to your ListView
+    listView.setAdapter(sectionAdapter);
 
 Also you can check a [complete example][simple-example-link] for a quick start. The [sources][sources-download-link] have a few more examples as well.
 
