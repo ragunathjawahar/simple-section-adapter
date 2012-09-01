@@ -7,7 +7,9 @@
 
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,10 +19,7 @@
       <header>
         <h1>Simple Section Adapter</h1>
         <p>The SIMPLEST Section Adapter for Android</p>
-
         <p class="view"><a href="https://github.com/ragunathjawahar/simple-section-adapter">View the Project on GitHub <small>ragunathjawahar/simple-section-adapter</small></a></p>
-
-
         <ul>
           <li><a href="https://github.com/ragunathjawahar/simple-section-adapter/zipball/master">Download <strong>ZIP File</strong></a></li>
           <li><a href="https://github.com/ragunathjawahar/simple-section-adapter/tarball/master">Download <strong>TAR Ball</strong></a></li>
@@ -49,13 +48,15 @@ SimpleSectionAdapter&lt;Book&gt; sectionAdapter = new SimpleSectionAdapter&lt;Bo
 // 3. Set the SimpleSectionAdapter to your ListView
 listView.setAdapter(sectionAdapter);
 </code></pre>
+
+<p><strong>NOTE: The data source (Cursor, ArrayList or Array) backed by your adapter should be sorted logically in the order you want them to be sectioned. For instance, if you want to section your books by genres, they have to be sorted by genres before you wrap it within the SimpleSectionAdapter.</strong></p>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/ragunathjawahar">ragunathjawahar</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/ragunathjawahar">ragunathjawahar</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
               <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
