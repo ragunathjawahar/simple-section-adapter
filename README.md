@@ -16,23 +16,24 @@ Compatibility
 
 Usage
 -----
+```java
+// 1. Create a Sectionizer    
+class BookSectionizer implements Sectionizer<Book> {
 
-    // 1. Create a Sectionizer    
-    class BookSectionizer implements Sectionizer<Book> {
-
-        @Override
-        public String getSectionTitleForItem(Book book) {
-            return book.getGenre();
-        }
+    @Override
+    public String getSectionTitleForItem(Book book) {
+        return book.getGenre();
     }
+}
 
-    // 2. Wrap your existing adapter with the SimpleSectionAdapter
-    SimpleSectionAdapter<Book> sectionAdapter = new SimpleSectionAdapter<Book>(context, 
-                yourBookAdapter, R.layout.section_header, R.id.title, 
-                new BookSectionizer());
+// 2. Wrap your existing adapter with the SimpleSectionAdapter
+SimpleSectionAdapter<Book> sectionAdapter = new SimpleSectionAdapter<Book>(context, 
+        yourBookAdapter, R.layout.section_header, R.id.title, 
+        new BookSectionizer());
     
-    // 3. Set the SimpleSectionAdapter to your ListView
-    listView.setAdapter(sectionAdapter);
+// 3. Set the SimpleSectionAdapter to your ListView
+listView.setAdapter(sectionAdapter);
+```
 
 Also you can check a [complete example][simple-example-link] for a quick start. The [sources][sources-download-link] have a few more examples as well.
 
@@ -47,18 +48,19 @@ OnItemClickListener
 -------------------
 While using an [OnItemClickListener][item-click-listener] instead of using the list item's position directly, use it as shown below.
 
-    @Override
-    public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {
-        // 1. You could do this
-        City city = (City) sectionAdapter.getItem(position);
+```java
+@Override
+public void onItemClick(AdapterView<?> parentView, View view, int position, long id) {
+    // 1. You could do this
+    City city = (City) sectionAdapter.getItem(position);
         
-        // 2. Or you could do this :)
-        int index = sectionAdapter.getIndexForPosition(position);
-        City sameCity = cities.get(index);
+    // 2. Or you could do this :)
+    int index = sectionAdapter.getIndexForPosition(position);
+    City sameCity = cities.get(index);
 
-        // More code...
-    }
-
+    // More code…
+}
+```
 
 FAQs
 ----
