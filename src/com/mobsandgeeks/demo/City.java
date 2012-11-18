@@ -24,7 +24,7 @@ public class City {
     private String name;
     private double latitude;
     private double longitude;
-    
+
     public City(String name, double latitude, double longitude) {
         this.name = name;
         this.latitude = latitude;
@@ -59,5 +59,5 @@ public class City {
     public String toString() {
         return "City [name=" + name + ", latitude=" + latitude + ", longitude="
                 + longitude + "]";
-    }    
+    }
 }

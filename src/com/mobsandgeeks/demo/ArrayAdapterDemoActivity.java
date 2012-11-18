@@ -38,7 +38,7 @@ public class ArrayAdapterDemoActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
-        
+
         // 1. Your data source
         String[] books = new String[] {
             "A Tale of Two Cities", "Le Petit Prince", "Dream of the Red Chamber", 
@@ -59,29 +59,29 @@ public class ArrayAdapterDemoActivity extends ListActivity {
             "Guess How Much I Love You", "Perfume", "God's Little Acre", "Dune",
             "No Longer Human", "Catch-22", "Eye of the Needle", "Wild Swans"
         };
-        
+
         // 2. Sort it
         Arrays.sort(books, 0, books.length, Collator.getInstance());
-    
+
         // 3. Create your adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
                 android.R.layout.simple_list_item_1, books);
-        
+
         // 4. Create a Sectionizer
         Sectionizer<String> alphabetSectionizer = new Sectionizer<String>() {
-            
+
             @Override
             public String getSectionTitleForItem(String bookName) {
                 return bookName.substring(0, 1);
             }
         };
-        
+
         // 5. Wrap your adapter within the SimpleSectionAdapter
         SimpleSectionAdapter<String> sectionAdapter = new SimpleSectionAdapter<String>(this, 
                 adapter, R.layout.section_header, R.id.title, alphabetSectionizer);
-        
+
         // 6. Set the adapter to your ListView
         setListAdapter(sectionAdapter);
     }
-    
+
 }

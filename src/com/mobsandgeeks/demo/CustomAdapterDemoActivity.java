@@ -46,30 +46,29 @@ public class CustomAdapterDemoActivity extends ListActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
-        
+
         // 1. Your data source
         List<City> cities = getCities();
-        
+
         // 2. Sort them using the distance from the current city
         City chennai = new City("Chennai", 13.15, 80.283333);
         DistanceComparator distanceComparator = new DistanceComparator(chennai);
         Collections.sort(cities, distanceComparator);
-        
+
         // 3. Create your custom adapter
         CityAdapter cityAdapter = new CityAdapter(this, R.layout.list_item_city, cities);
-        
+
         // 4. Create a Sectionizer
         DistanceSectionizer distanceSectionizer = new DistanceSectionizer(chennai);
-        
+
         // 5. Wrap your adapter within the SimpleSectionAdapter
         SimpleSectionAdapter<City> sectionAdapter = new SimpleSectionAdapter<City>(this, 
                 cityAdapter, R.layout.section_header, R.id.title, distanceSectionizer);
-        
+
         // 6. Set the adapter to your ListView
         setListAdapter(sectionAdapter);
-
     }
-    
+
     /*
      * (non-Javadoc)
      * @see android.app.ListActivity#onListItemClick(android.widget.ListView, android.view.View, int, long)
@@ -101,31 +100,30 @@ public class CustomAdapterDemoActivity extends ListActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
             View view = convertView;
             Holder holder = null;
-            
+
             if(view == null) {
                 view = View.inflate(CustomAdapterDemoActivity.this, 
                         R.layout.list_item_city, null);
-                
+
                 holder = new Holder();
                 holder.cityTextView = (TextView) view.findViewById(R.id.city);
                 holder.geoPointTextView = (TextView) view.findViewById(R.id.geo_point);
-                
+
                 view.setTag(holder);
             } else {
                 holder = (Holder) view.getTag();
             }
-            
+
             // Set properties
             City city = cities.get(position);
             holder.cityTextView.setText(city.getName());
             holder.geoPointTextView.setText(String.format("lat: %f, long: %f", 
                     city.getLatitude(), city.getLongitude()));
-            
+
             return view;
         }
-        
     }
-    
+
     /*
      * Holder for the custom adapter.
      */
@@ -133,13 +131,13 @@ public class CustomAdapterDemoActivity extends ListActivity {
         public TextView cityTextView;
         public TextView geoPointTextView;
     }
-    
+
     /*
      * Sectionizer supplies labels based on the distance from the current city.
      */
     class DistanceSectionizer implements Sectionizer<City> {
         private City currentCity;
-        
+
         public DistanceSectionizer(City currentCity) {
             this.currentCity = currentCity;
         }
@@ -147,7 +145,7 @@ public class CustomAdapterDemoActivity extends ListActivity {
         @Override
         public String getSectionTitleForItem(City city) {
             String sectionTitle = "Unknown";
-            
+
             float distance = getDistanceInKm(currentCity, city);
             if(distance < 500) {
                 sectionTitle = "Less than 500 km";
@@ -164,17 +162,16 @@ public class CustomAdapterDemoActivity extends ListActivity {
             } else {
                 sectionTitle = "More than 8000 km";
             }
-            
             return sectionTitle;
         }
     }
-    
+
     /*
      * This Comparator sorts cities based on their distances from the current city.
      */
     class DistanceComparator implements Comparator<City> {
         private City currentCity;
-        
+
         public DistanceComparator(City currentCity) {
             this.currentCity = currentCity;
         }
@@ -188,7 +185,7 @@ public class CustomAdapterDemoActivity extends ListActivity {
                 currentCityToCity1 < currentCityToCity2 ? -1 : 0;
         }
     }
-    
+
     /*
      * Method finds distance in kilometers between two given cities.
      */
@@ -203,14 +200,14 @@ public class CustomAdapterDemoActivity extends ListActivity {
         
         return sourceCityLocation.distanceTo(destinationCityLocation) / 1000;
     }
-    
+
     /*
      * This is your data source. In reality, this could come from a SQLite database,
      * a remote server or a flat-file.
      */
     private List<City> getCities() {
         List<City> cities = new ArrayList<City>();
-        
+
         cities.add(new City("Alert", 82.466667, 62.5));
         cities.add(new City("Bangalore", 12.966667, 77.583333));
         cities.add(new City("Oslo", 59.933333, 10.75));
@@ -245,7 +242,7 @@ public class CustomAdapterDemoActivity extends ListActivity {
         cities.add(new City("Mumbai", 18.966667, 72.816667));
         cities.add(new City("Penang", 5.416667, 100.316667));
         cities.add(new City("Sydney", -33.866667, 151.216667));
-        
+
         return cities;
     }
 }

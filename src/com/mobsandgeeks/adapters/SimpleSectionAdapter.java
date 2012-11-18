@@ -33,7 +33,7 @@ import android.widget.TextView;
  * A very simple adapter that adds sections to adapters written for {@link ListView}s.
  * <br />
  * <b>NOTE: The adapter assumes that the data source of the decorated list adapter is sorted.</b>
- * 
+ *
  * @author Ragunath Jawahar R <rj@mobsandgeeks.com>
  * @version 0.2
  */
@@ -41,10 +41,10 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     // Debug
     static final boolean DEBUG = false;
     static final String TAG = SimpleSectionAdapter.class.getSimpleName();
-    
+
     // Constants
     private static final int VIEW_TYPE_SECTION_HEADER = 0;
-    
+
     // Attributes
     private Context mContext;
     private BaseAdapter mListAdapter;
@@ -52,7 +52,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     private int mSectionTitleTextViewId;
     private Sectionizer<T> mSectionizer;
     private LinkedHashMap<String, Integer> mSections;
-    
+
     /**
      * Constructs a {@linkplain SimpleSectionAdapter}.
      * 
@@ -74,43 +74,43 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         } else if(!isTextView(context, sectionHeaderLayoutId, sectionTitleTextViewId)) {
             throw new IllegalArgumentException("sectionTitleTextViewId should be a TextView.");
         }
-        
+
         this.mContext = context;
         this.mListAdapter = listAdapter;
         this.mSectionHeaderLayoutId = sectionHeaderLayoutId;
         this.mSectionTitleTextViewId = sectionTitleTextViewId;
         this.mSectionizer = sectionizer;
         this.mSections = new LinkedHashMap<String, Integer>();
-        
+
         // Find sections
         findSections();
     }
-    
+
     private boolean isTextView(Context context, int layoutId, int textViewId) {
         View inflatedView = View.inflate(context, layoutId, null);
         View foundView = inflatedView.findViewById(textViewId);
-        
+
         return foundView instanceof TextView;
     }
-    
+
     @Override
     public int getCount() {
         return mListAdapter.getCount() + getSectionCount();
     }
-    
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
         SectionHolder sectionHolder = null;
-        
+
         switch (getItemViewType(position)) {
         case VIEW_TYPE_SECTION_HEADER:
             if(view == null) {
                 view = View.inflate(mContext, mSectionHeaderLayoutId, null);
-                
+
                 sectionHolder = new SectionHolder();
                 sectionHolder.titleTextView = (TextView) view.findViewById(mSectionTitleTextViewId);
-                
+
                 view.setTag(sectionHolder);
             } else {
                 sectionHolder = (SectionHolder) view.getTag();
@@ -122,12 +122,12 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
                     convertView, parent);
             break;
         }
-        
+
         if(sectionHolder != null) {
             String sectionName = sectionTitleForPosition(position);
             sectionHolder.titleTextView.setText(sectionName);
         }
-        
+
         return view;
     }
 
@@ -155,7 +155,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         return mSections.values().contains(position) ? 
                 false : mListAdapter.isEnabled(getIndexForPosition(position));
     }
-    
+
     @Override
     public Object getItem(int position) {
         return mListAdapter.getItem(getIndexForPosition(position));
@@ -165,14 +165,14 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     public long getItemId(int position) {
         return mListAdapter.getItemId(getIndexForPosition(position));
     }
-    
+
     @Override
     public void notifyDataSetChanged() {
         mListAdapter.notifyDataSetChanged();
         findSections();
         super.notifyDataSetChanged();
     }
-    
+
     /**
      * Returns the actual index of the object in the data source linked to the this list item.
      * 
@@ -181,37 +181,35 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
      */
     public int getIndexForPosition(int position) {
         int nSections = 0;
-        
+
         Set<Entry<String, Integer>> entrySet = mSections.entrySet();
         for(Entry<String, Integer> entry : entrySet) {
             if(entry.getValue() < position) {
                 nSections++;
             }
         }
-        
+
         return position - nSections;
     }
 
     static class SectionHolder {
         public TextView titleTextView;
     }
-    
+
     private void findSections() {
         int n = mListAdapter.getCount();
         int nSections = 0;
         mSections.clear();
-        
+
         for(int i=0; i<n; i++) {
-            @SuppressWarnings("unchecked")
-            String sectionName = mSectionizer.getSectionTitleForItem(
-                    (T) mListAdapter.getItem(i));
-            
+            String sectionName = mSectionizer.getSectionTitleForItem((T) mListAdapter.getItem(i));
+
             if(!mSections.containsKey(sectionName)) {
                 mSections.put(sectionName, i + nSections);
                 nSections ++;
             }
         }
-        
+
         if(DEBUG) {
             Log.d(TAG, String.format("Found %d sections.", mSections.size()));
         }
@@ -223,7 +221,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
 
     private String sectionTitleForPosition(int position) {
         String title = null;
-        
+
         Set<Entry<String, Integer>> entrySet = mSections.entrySet();
         for(Entry<String, Integer> entry : entrySet) {
             if(entry.getValue() == position) {
@@ -231,7 +229,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
                 break;
             }
         }
-        
+
         return title;
     }
 }

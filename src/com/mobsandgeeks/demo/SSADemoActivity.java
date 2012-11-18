@@ -30,16 +30,16 @@ import android.widget.ListView;
 * @version 0.1
 */
 public class SSADemoActivity extends ListActivity {
-    
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
-        
+
         // Demos
         String[] demos = { "Array Adapter", "Custom Adapter" };
-        
+
         // Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
                 android.R.layout.simple_list_item_1, demos);
@@ -49,7 +49,7 @@ public class SSADemoActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         Class<?> clazz = null;
-        
+
         switch(position) {
         case 0:
             clazz = ArrayAdapterDemoActivity.class;
@@ -58,11 +58,11 @@ public class SSADemoActivity extends ListActivity {
             clazz = CustomAdapterDemoActivity.class;
             break;
         }
-        
+
         if(clazz != null) {
             Intent intent = new Intent(this, clazz);
             startActivity(intent);
         }
     }
-    
+
 }

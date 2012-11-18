@@ -25,7 +25,7 @@ package com.mobsandgeeks.adapters;
  * @version 1.0 
  */
 public interface Sectionizer<T> {
-    
+
     /**
      * Returns the title for the given instance from the data source.
      * 
