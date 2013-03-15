@@ -16,11 +16,8 @@
 
 package com.mobsandgeeks.adapters;
 
-import java.util.LinkedHashMap;
-import java.util.Map.Entry;
-import java.util.Set;
-
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +25,10 @@ import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 /**
  * A very simple adapter that adds sections to adapters written for {@link ListView}s.
@@ -52,6 +53,13 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     private int mSectionTitleTextViewId;
     private Sectionizer<T> mSectionizer;
     private LinkedHashMap<String, Integer> mSections;
+    private final DataSetObserver dataSetObserver = new DataSetObserver() {
+        @Override
+        public void onChanged( ) {
+            super.onChanged();
+            findSections();
+        }
+    };
 
     /**
      * Constructs a {@linkplain SimpleSectionAdapter}.
@@ -81,6 +89,8 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         this.mSectionTitleTextViewId = sectionTitleTextViewId;
         this.mSectionizer = sectionizer;
         this.mSections = new LinkedHashMap<String, Integer>();
+
+        registerDataSetObserver(dataSetObserver);
 
         // Find sections
         findSections();
@@ -231,5 +241,15 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         }
 
         return title;
+    }
+
+    @Override
+    public void registerDataSetObserver( DataSetObserver observer ) {
+        mListAdapter.registerDataSetObserver(observer);
+    }
+
+    @Override
+    public void unregisterDataSetObserver( DataSetObserver observer ) {
+        mListAdapter.unregisterDataSetObserver(observer);
     }
 }
