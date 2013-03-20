@@ -1,3 +1,5 @@
+[![Flattr this git repo](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/submit/auto?user_id=ragunathjawahar&url=https://github.com/ragunathjawahar/simple-section-adapter/&title=Simple Section Adapter&language=&tags=github&category=software)
+
 About
 -----
 
