@@ -17,7 +17,6 @@
 package com.mobsandgeeks.adapters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,13 +52,6 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
     private int mSectionTitleTextViewId;
     private Sectionizer<T> mSectionizer;
     private LinkedHashMap<String, Integer> mSections;
-    private final DataSetObserver dataSetObserver = new DataSetObserver() {
-        @Override
-        public void onChanged( ) {
-            super.onChanged();
-            findSections();
-        }
-    };
 
     /**
      * Constructs a {@linkplain SimpleSectionAdapter}.
@@ -89,8 +81,6 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
         this.mSectionTitleTextViewId = sectionTitleTextViewId;
         this.mSectionizer = sectionizer;
         this.mSections = new LinkedHashMap<String, Integer>();
-
-        registerDataSetObserver(dataSetObserver);
 
         // Find sections
         findSections();
@@ -239,17 +229,7 @@ public class SimpleSectionAdapter<T> extends BaseAdapter {
                 break;
             }
         }
-
         return title;
     }
 
-    @Override
-    public void registerDataSetObserver( DataSetObserver observer ) {
-        mListAdapter.registerDataSetObserver(observer);
-    }
-
-    @Override
-    public void unregisterDataSetObserver( DataSetObserver observer ) {
-        mListAdapter.unregisterDataSetObserver(observer);
-    }
 }
