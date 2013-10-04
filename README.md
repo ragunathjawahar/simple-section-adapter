@@ -1,3 +1,7 @@
+Notice
+---------
+**Simple Section Adapter** is now part of an even more awesome [Adapter Kit] project!
+
 About
 -----
 
@@ -90,6 +94,7 @@ License
     See the License for the specific language governing permissions and
     limitations under the License.
 
+  [Adapter Kit]: https://github.com/mobsandgeeks/adapter-kit
   [list-view-link]: http://developer.android.com/reference/android/widget/ListView.html
   [google-search]: https://www.google.co.in/search?ie=UTF-8&q=android+section+adapter
   [github-project]: https://github.com/ragunathjawahar/simple-section-adapter
